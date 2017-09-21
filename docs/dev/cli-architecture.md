@@ -14,15 +14,15 @@
 |-----------------------|-----------------------|-------------------------------|
 | start transformation | starts the transformation | -startt or -start transformation |
 | stop transformation | stops a transformation | -stopt or -stop transformation |
-| start | starts the deployment | -startd or -start deployment |
-| stop | stops the deployment | -stopd or -stop deployment |
+| start deployment | starts the deployment | -startd or -start deployment |
+| stop deployment | stops the deployment | -stopd or -stop deployment |
 | status | prints some information about a current transformation or component | -status |
 | verbose | show logs while transformation | -v or -verbose |
 | list | show all available supported platforms | -l or -list |
 | transform | transform the given topology to the desired platform | -t platform or -transform platform |
 | help | prints the main page | -h or -help |
-| logs | prints the created logs | -logs |
+| debug | prints debug information | -debug |
 | change | change a given value | -change value |
 | default | prints the set default values | -default |
 | cls | cleans the screen | -cls |
-| quit | quits the CLI | -quit or -exit |
+| quit | quits the CLI | -e or -quit |
