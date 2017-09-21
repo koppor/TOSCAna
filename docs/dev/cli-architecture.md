@@ -1,33 +1,28 @@
-# Requirements CLI - draft
+# Definition CLI Architecture
 
 ## Basics
-- parse the commands and call the commands
-- call the method to transform a given topology to a custom language (begin / interrupt / select language)
+- parse and call the commands
+- call the method to transform and/ or deploy a given topology to a custom platform (start / stop / transform platform)
 - show current status of transformation
-- print logs if wanted
+- print detailed logs if wanted
 - get status from different components
-- show supported languages
+- show supported platforms
 - create threads to provide asynchronous operations
 
 ## supported commands
-| command                | description          | option                        |
+| command | description | option |
 |-----------------------|-----------------------|-------------------------------|
-| start         | starts the transformation     | -s or -start                            |
-| stop        | stops a transformation      |-stop |
-| status        | prints some information about a current transformation or default values       |-status |
-| verbose        | show logs while transformation      |-v |
-| list        | show all available supported languages      |-l |
-| help        | prints the man page      |-h or -help |
-| default        | prints the set default values      |-default |
-
-
-
-## additional
-- save and load custom settings
-- man page / help
-- make it friendly for testing
-
-## questions
-- lifecycle operations(deploy, start, stop ... application)?
-- catch errors?
-- custom style
+| start transformation | starts the transformation | -startt or -start transformation |
+| stop transformation | stops a transformation | -stopt or -stop transformation |
+| start | starts the deployment | -startd or -start deployment |
+| stop | stops the deployment | -stopd or -stop deployment |
+| status | prints some information about a current transformation or component | -status |
+| verbose | show logs while transformation | -v or -verbose |
+| list | show all available supported platforms | -l or -list |
+| transform | transform the given topology to the desired platform | -t platform or -transform platform |
+| help | prints the main page | -h or -help |
+| logs | prints the created logs | -logs |
+| change | change a given value | -change value |
+| default | prints the set default values | -default |
+| cls | cleans the screen | -cls |
+| quit | quits the CLI | -quit or -exit |
