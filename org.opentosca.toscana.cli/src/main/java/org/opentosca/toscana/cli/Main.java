@@ -4,15 +4,19 @@ import org.apache.commons.cli.*;
 
 public class Main {
 
+    private static OptionsMenu options;
+    private static CommandLineParser parser;
+    private static CommandLine line;
+
     public static void main(String[] args) {
-        OptionsMenu options = new OptionsMenu();
+        options = new OptionsMenu();
         options.printHelp();
 
         // create the parser
-        CommandLineParser parser = new DefaultParser();
+        parser = new DefaultParser();
         try {
             // parse the command line arguments
-            CommandLine line = parser.parse( options, args );
+            line = parser.parse( options, args );
 
             if(line.hasOption("test")){
                 System.out.println("test");
