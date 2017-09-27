@@ -4,26 +4,27 @@ import org.apache.commons.cli.*;
 
 public class Main {
 
-    private static OptionsMenu options;
+    private static Options options;
     private static CommandLineParser parser;
     private static CommandLine line;
+    private static OptionsMenu optionsMenu;
 
     public static void main(String[] args) {
-        options = new OptionsMenu();
-        options.printHelp();
+        optionsMenu = new OptionsMenu();
+        options = optionsMenu.getAllOptions();
 
         // create the parser
         parser = new DefaultParser();
-        try {
+        try{
             // parse the command line arguments
-            line = parser.parse( options, args );
+            line = parser.parse(options, args);
 
-            if(line.hasOption("test")){
-                System.out.println("test");
+            if(line.hasOption("help")){
+                optionsMenu.printHelp();
             }
         }
         catch( ParseException exp ) {
-            System.err.println( "Unexpected error: " + exp.getMessage() );
+            System.err.println("Error occured: " +exp.getMessage());
         }
     }
 
