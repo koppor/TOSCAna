@@ -21,6 +21,8 @@ public class OptionsMenu extends Options {
      */
     public OptionsMenu(){
         options = new Options();
+        transform.setArgName("platform");
+        usage.setArgName("command");
         options.addOption(start);
         options.addOption(stop);
         options.addOption(verbose);
@@ -34,8 +36,11 @@ public class OptionsMenu extends Options {
     * generates the help statement
     */
     public void printHelp(){
+        final String syntax = "TOSCAna";
+        final String helpHeader = "\n These are common TOSCAna commands used in various situations: \n";
+        final String helpFooter = "\n See 'TOSCAna -u <command>' to read about a specific subcommand \n";
         HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("toscana", options);
+        formatter.printHelp(syntax, helpHeader, options, helpFooter, true);
     }
 
     /*
