@@ -12,14 +12,18 @@ Describes the planned automated deployment of the simple application based on ou
 
 ### Transformation
 - Data model of the simple app is provided by core
-- Application is already containerized through Docker
-  - **Note**: For the full version of the plugin an additional step is needed in order to containerize applications. This will probably be fairly complex, since the plugin must decide which parts of the application will be put in which container.
-- Plugin creates Kubernetes Deployment configuration (YAML) based on data model
-- **Output**: target artifacts (Deployment configuration, container)
+- Getting the container image path
+  1. Case:
+    - Container image is created from source with Docker
+    - **Note**: For the full version of the plugin an additional step is needed in order to containerize applications. This will probably be fairly complex, since the plugin must decide which parts of the application will be put in which container.
+    - Plugin pushes container image to a user supplied registry (depending on the registry credentials will probably be needed)
+  2. Case:
+    - CSAR describes the container image path on a registry. This means the steps described in case 1 can be skipped and the image path can be used to create the Deployment configuration.
+- Plugin creates Kubernetes Deployment configuration (YAML) based on data model and container image path (on registry)
+- **Output**: target artifacts (Deployment configuration)
 
 ### Deployment
-- Plugin creates Kubernetes cluster
-- Plugin creates Deployment from YAML configuration
+- Plugin creates Deployment from YAML configuration on an existing Kubernetes cluster (Kubernetes pulls the container image from registry)
 - **Output**: endpoint of Kubernetes cluster
 
 ---
