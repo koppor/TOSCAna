@@ -22,5 +22,20 @@ public class MainTest {
         assertTrue(main.createCli(new String[] {""}));
     }
 
+    @Test
+    public void printHelp() {
+        assertTrue(main.createCli(new String[] {"-h"}));
+    }
+
+    @Test
+    public void printUsageHelp() {
+         assertTrue(main.createCli(new String[] {"-u"}));
+    }
+
+    @Test
+    public void startTransformation(){
+        assertTrue(main.createCli(new String[] {"-t platform1 -c abc.csar"}));
+    }
+
 }
 

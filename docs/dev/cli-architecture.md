@@ -9,22 +9,25 @@ This document describes the architecture, the supported commands and used librar
 
 The CliController is the main class to initialize the CLI and show the possible commands of the OptionsMenu the User can execute. After the user has input a command, the CliController calls the ApiController to process the command.
 
+The methods shown in the above class diagram have the following functionality:
+* `createCli(input: String[]):Boolean` - launches the CLI and processes passed commands
+
 ## OptionsMenu
 The OptionsMenu contains all commands the User can call with the CLI.
 
 The methods shown in the above class diagram have the following functionality:
-* `printHelp():Boolean` - prints all possible Commands the User can call
-* `printUsage():Boolean` - the Usage of the specific CLI command is explained
+* `printHelp():void` - prints all possible Commands the User can call
+* `printUsage():void` - the Usage of the specific CLI command is explained
+* `getAllOptions():Options` - returns all available Options
 
 ## ApiController
 The ApiController performs the tasks the User wants to do and calls the functions of the REST API.
 
 The methods shown in the above class diagram have the following functionality:
-* `startTransformation(platform: String): Application` - starts a new Transformation to the desired Platform
-* `stopTransformation():Boolean` - stops currently running Transformation
-* `serveArchive(archive: File):Boolean` - the Archive gets uploaded to the API Server
-* `receiveArchive(output:File):Boolean` - the transformed archive gets downloaded from the API Server
-* `printLogs():String` - prints logs for better debugging
+* `startTransformation():String` - starts a new Transformation to the desired Platform
+* `abortTransformation():String` - stops currently running Transformation
+* `selectPlatform(platform: String):String` - the Platform is selected from the User
+* `verbose():String` - prints logs
 * `listPlatforms():String` - lists all available Platforms where an archive can be deployed
 
 ## Basics
@@ -37,16 +40,15 @@ The main tasks of the CLI component are:
 - create threads to provide asynchronous operations
 
 ## Supported Commands
-| command | description | option |
-|-----------------------|-----------------------|-------------------------------|
-| start transformation | starts the transformation | -s or --start-transformation |
-| abort transformation | stops the transformation | -a or --abort-transformation |
-| verbose | show logs while transformation | -v or --verbose |
-| list | show all available supported platforms | -l or --list |
-| transform | transform the given topology to the desired platforms | -t platform or --transform platform |
-| help | prints the man page | -h or --help |
-| output | location where the transformation should be placed | -o location or --output location
-| usage | explains how the command works | -u command or -usage command |
+| CLI Option | Description | Call Command |
+|-------------|-------------|-------------|
+| provide CSAR | provide location of the CSAR Archive, the location is passed as parameter | `-c <location>` or `--csar <location>` |
+| start transformation | start the transformation of the given topology to the desired platform, the platform is passed as parameter | `-t <platform>` or `--transform <platform>` |
+| stop transformation | stops the currently running transformation | `-a` or `--abort` |
+| verbose | show logs while transformation is running | `-v` or `--verbose` |
+| list | show all available supported platforms | `-l` or `--list` |
+| help | prints the man page | `-h` or `--help` |
+| usage | explains how the commands are called | `-u` or `-usage` |
 
 ## Architecture Library
 To control the TOSCAna software we need a command-line-interface (CLI) which will be integrated in the program-code. Therefore we could use different libraries.

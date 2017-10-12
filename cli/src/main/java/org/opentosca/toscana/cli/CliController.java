@@ -7,7 +7,7 @@ import java.io.File;
 
 public class CliController {
 
-    //private static final Logger LOG = LoggerFactory.getLogger(CliController.class);
+    //private static final Logger logger = LoggerFactory.getLogger(CliController.class.getName());
 
     private static Options options;
     private static CommandLineParser parser;
@@ -37,14 +37,14 @@ public class CliController {
 
             line = parser.parse(options, input);
 
-        } catch(ParseException exp) {
-                System.err.println("Error occured: " +exp.getMessage());
-                //LOG.error("Error occured: ",exp);
+        } catch(ParseException e) {
+                System.err.println("Error occured: " +e.getMessage());
+                //logger.error("Error occured: ",e);
                 return false;
             }
 
-        if(line.hasOption("file")){
-            final String filePath=line.getOptionValue("file");
+        if(line.hasOption("csar")){
+            final String filePath=line.getOptionValue("csar");
             if(new File(filePath).exists() && isCSAR(filePath)) {
                 setFile(filePath);
             } else {

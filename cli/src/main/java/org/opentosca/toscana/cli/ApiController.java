@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class ApiController {
 
-    //private static final Logger LOG = LoggerFactory.getLogger(ApiController.class);
+    //private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
     private boolean started=false;
 
     /**
