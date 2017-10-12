@@ -56,8 +56,10 @@ To control the TOSCAna software we need a command-line-interface (CLI) which wil
 * library created by ourself
 * open source library from apache - ["Commons CLI"](https://commons.apache.org/proper/commons-cli/index.html)
 * [args4j](https://github.com/kohsuke/args4j)
+* [JCommander](https://github.com/cbeust/jcommander)
 * [jopt simple](http://pholser.github.io/jopt-simple/examples.html)
 * [JewelCli](http://jewelcli.lexicalscope.com/)
+* [Picocli](https://github.com/remkop/picocli)
 
 
 ## Conclusion
