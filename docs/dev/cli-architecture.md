@@ -7,10 +7,12 @@ This document describes the architecture, the supported commands and used librar
 
 ## CliController
 
-The CliController is the main class to initialize the CLI and show the possible commands of the OptionsMenu the User can execute. After the user has input a command, the CliController calls the ApiController to process the command.
+The CliController is the main class to initialize the CLI and show the possible commands of the OptionsMenu the User can execute. After the user has input a command, the CliController calls the ApiController to process the command. The user can launch an interactive CLI.
 
 The methods shown in the above class diagram have the following functionality:
 * `createCli(input: String[]):Boolean` - launches the CLI and processes passed commands
+* `callOption(line: CommandLine):String` - launches the interactive CLI and processes commands
+* `isCSAR(name:String):String` - returns if the delivered Archive is a CSAR Archive
 
 ## OptionsMenu
 The OptionsMenu contains all commands the User can call with the CLI.
@@ -42,13 +44,14 @@ The main tasks of the CLI component are:
 ## Supported Commands
 | CLI Option | Description | Call Command |
 |-------------|-------------|-------------|
-| provide CSAR | provide location of the CSAR Archive, the location is passed as parameter | `-c <location>` or `--csar <location>` |
-| start transformation | start the transformation of the given topology to the desired platform, the platform is passed as parameter | `-t <platform>` or `--transform <platform>` |
+| provide CSAR | provide location of the CSAR Archive, the location is passed as a parameter | `-c <location>` or `--csar <location>` |
+| transform | start the transformation of the given topology to the desired platform, the platform is passed as a parameter | `-t <platform>` or `--transform <platform>` |
 | stop transformation | stops the currently running transformation | `-a` or `--abort` |
+| interactive | makes the CLI interactive | `-i` or `--interactive` |
 | verbose | show logs while transformation is running | `-v` or `--verbose` |
 | list | show all available supported platforms | `-l` or `--list` |
 | help | prints the man page | `-h` or `--help` |
-| usage | explains how the commands are called | `-u` or `-usage` |
+| usage | explains how the commands are called | `-u` or `--usage` |
 
 ## Architecture Library
 To control the TOSCAna software we need a command-line-interface (CLI) which will be integrated in the program-code. Therefore we could use different libraries.
